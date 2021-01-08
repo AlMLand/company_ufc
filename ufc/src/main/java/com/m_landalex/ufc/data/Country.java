@@ -1,7 +1,14 @@
 package com.m_landalex.ufc.data;
 
-public enum Country {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-	USA, Germany, Russia, UAE
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class Country {
+
+	public static final String COUNTRY_USA = "USA";
+	public static final String COUNTRY_GERMANY = "Germany";
+	public static final String COUNTRY_RUSSIA = "Russia"; 
+	public static final String COUNTRY_UAE = "UAE";
 	
 }

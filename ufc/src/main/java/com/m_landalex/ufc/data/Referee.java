@@ -1,7 +1,15 @@
 package com.m_landalex.ufc.data;
 
-public enum Referee{
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class Referee{
 	
-	Dan_Miragliotta, Mike_Beltran, Marc_Goddard, Steve_Mazzagatti, Mario_Yamasaki;
+	public static final String REFEREE_DAN_MIRAGLIOTTA = "Dan Miragliotta"; 
+	public static final String REFEREE_MIKE_BELTRAN = "Mike Beltran"; 
+	public static final String REFEREE_MARC_GODDARD = "Marc Goddard";
+	public static final String REFEREE_STEVE_MAZZAGATTI = "Steve Mazzagatti"; 
+	public static final String REFEREE_MARIO_YAMASAKI = "Mario Yamasaki";
 	
 }

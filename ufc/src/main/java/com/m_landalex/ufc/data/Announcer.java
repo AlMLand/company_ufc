@@ -1,7 +1,12 @@
 package com.m_landalex.ufc.data;
 
-public enum Announcer {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-	Bruce_Buffer, Joseph_Anthony_Martinez;
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class Announcer {
+
+	public final static String ANNOUNCER_BRUCE_BUFFER = "Bruce_Buffer"; 
+	public static final String ANNOUNCER_JOSEPH_ANTHONY_MARTINEZ = "Joseph_Anthony_Martinez";
 	
 }
