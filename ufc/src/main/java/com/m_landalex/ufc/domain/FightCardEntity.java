@@ -1,6 +1,9 @@
 package com.m_landalex.ufc.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -16,7 +19,13 @@ import lombok.Setter;
 @Table(name = "fight_card")
 public class FightCardEntity extends AbstractEntity {
 
+	@OneToOne(mappedBy = "fightCardEntity", cascade = CascadeType.ALL)
 	private MainCardEntity mainCard;
+	@OneToOne(mappedBy = "fightCardEntity", cascade = CascadeType.ALL)
 	private PreliminaryCardEntity preliminaryCard;
+	
+	@OneToOne
+	@JoinColumn(name = "event", referencedColumnName = "id")
+	private EventEntity eventEntity;
 	
 }
