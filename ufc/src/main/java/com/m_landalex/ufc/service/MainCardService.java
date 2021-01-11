@@ -1,9 +1,13 @@
 package com.m_landalex.ufc.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.m_landalex.ufc.data.MainCard;
+import com.m_landalex.ufc.mapper.MainCardMapper;
 import com.m_landalex.ufc.persistence.MainCardRepository;
 
 @Transactional
@@ -12,5 +16,12 @@ public class MainCardService {
 
 	@Autowired
 	private MainCardRepository mainCardRepository;
+	@Autowired
+	private MainCardMapper mainCardMapper;
+	
+	@Transactional(readOnly = true)
+	public List<MainCard> fetchAll(){
+		return mainCardMapper.toDTOList(mainCardRepository.findAll());
+	}
 	
 }
