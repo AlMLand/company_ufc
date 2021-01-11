@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.Singular;
 
 @Data
 @Builder
@@ -15,11 +16,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class MainCard extends AbstractObject {
 
-	private List<Fight> fightList;
+	@Singular
+	private List<Fight> fights;
 
-	@Override
-	public String toString() {
-		return "MainCard [fightList=" + fightList.size() + " fights]";
-	}
-	
 }

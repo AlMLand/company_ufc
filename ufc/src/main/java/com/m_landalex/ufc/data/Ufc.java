@@ -1,10 +1,13 @@
 package com.m_landalex.ufc.data;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.Singular;
 
 @Data
 @Builder
@@ -13,13 +16,10 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class Ufc extends AbstractObject {
 
-	private Event ufcEvent;
-	private Address address;
-	private String generalManager;
+	@Singular
+	private List<Event> ufcEvents;
+	private Address ufcAddress;
+	@Singular
+	private List<UfcInterEmployee> ufcInterEmployees;
 
-	@Override
-	public String toString() {
-		return "Ufc [" + super.toString() + ", ufcEvent=" + ufcEvent + "]";
-	}
-	
 }

@@ -1,22 +1,22 @@
 package com.m_landalex.ufc.data;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.Singular;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class PreliminaryCard extends AbstractObject {
+public class UfcInterEmployee extends AbstractObject {
 
-	@Singular
-	private List<Fight> fights;
-
+	private String position;
+	private String firstName;
+	private String lastName;
+	private int age;
+	private Address address;
+	
 }

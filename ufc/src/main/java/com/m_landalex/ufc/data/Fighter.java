@@ -16,6 +16,7 @@ public class Fighter extends AbstractObject {
 	private WeightClass weightClass;
 	private String firstName;
 	private String lastName;
+	private int age;
 	private Address address;
 	private int wins;
 	private int loses;
