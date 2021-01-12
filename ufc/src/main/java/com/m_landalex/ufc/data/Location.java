@@ -17,9 +17,4 @@ public class Location extends AbstractObject {
 	private String hallName;
 	private Address address;
 	
-	@Override
-	public String toString() {
-		return "Localtion [" + super.toString() + ", country=" + country + ", hallName=" + hallName + ", address=" + address + "]";
-	}
-	
 }

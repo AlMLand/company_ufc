@@ -22,10 +22,4 @@ public class Event extends AbstractObject {
 	private Location eventLocation;
 	private FightCard fightCard;
 
-	@Override
-	public String toString() {
-		return "Event [" + super.toString() + ", eventName=" + eventName + ", eventNumber=" + eventNumber + ", eventData=" + eventData
-				+ ", eventLocation=" + eventLocation + ", fightCard=" + fightCard + "]";
-	}
-	
 }
