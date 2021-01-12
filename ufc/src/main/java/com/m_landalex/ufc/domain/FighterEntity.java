@@ -1,6 +1,5 @@
 package com.m_landalex.ufc.domain;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -25,12 +24,13 @@ public class FighterEntity extends AbstractEntity {
 
 	@Enumerated(EnumType.STRING)
 	private WeightClass weightClass;
+	private int ufcRanked;
 	private String firstName;
 	private String lastName;
 	private int age;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id", referencedColumnName = "id")
-	private AddressEntity address;
+	@ManyToOne
+	@JoinColumn(name = "training_team_id", referencedColumnName = "id")
+	private TrainingteamEntity trainingteam;
 	private int wins;
 	private int loses;
 	private int undecided;

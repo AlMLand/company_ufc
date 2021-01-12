@@ -11,16 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Fighter extends AbstractObject {
+public class Trainingteam extends AbstractObject {
 
-	private WeightClass weightClass;
-	private int ufcRanked;
-	private String firstName;
-	private String lastName;
-	private int age;
-	private Trainingteam trainingteam;
-	private int wins;
-	private int loses;
-	private int undecided;
+	private String teamName;
+	private Address address;
 	
 }

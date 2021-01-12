@@ -33,14 +33,14 @@ public class AddressEntity extends AbstractEntity {
 	private UfcEntity ufcEntity;
 	
 	@OneToMany(mappedBy = "address")
+	private List<TrainingteamEntity> trainingteams;
+	
+	@OneToMany(mappedBy = "address")
 	private List<UfcInternEmployeeEntity> ufcInternEmployeeEntities;
 	
 	@OneToMany(mappedBy = "address")
 	private List<LocationEntity> locationEntities;
 	
-	@OneToMany(mappedBy = "address")
-	private List<FighterEntity> fighterEntities;
-
 	public void setUfcInternEmployeeEntities(List<UfcInternEmployeeEntity> ufcInternEmployeeEntities) {
 		ufcInternEmployeeEntities.forEach(ufcInternEmployee -> ufcInternEmployee.setAddress(this));
 		this.ufcInternEmployeeEntities = ufcInternEmployeeEntities;
@@ -61,14 +61,9 @@ public class AddressEntity extends AbstractEntity {
 		locationEntity.setAddress(this);
 	}
 
-	public void setFighterEntities(List<FighterEntity> fighterEntities) {
-		fighterEntities.forEach(fighterEntity -> fighterEntity.setAddress(this));
-		this.fighterEntities = fighterEntities;
-	}
-	
-	public void addFighterEntity(FighterEntity fighterEntity) {
-		this.fighterEntities.add(fighterEntity);
-		fighterEntity.setAddress(this);
+	public void setTrainingteams(List<TrainingteamEntity> trainingteams) {
+		trainingteams.forEach(trainingteam -> trainingteam.setAddress(this));
+		this.trainingteams = trainingteams;
 	}
 	
 }
