@@ -27,7 +27,7 @@ public class TrainingteamEntity extends AbstractEntity {
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	private AddressEntity address;
 	
-	@OneToMany(mappedBy = "trainingteam", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "trainingteam")
 	private List<FighterEntity> fighterEntities;
 	
 }
