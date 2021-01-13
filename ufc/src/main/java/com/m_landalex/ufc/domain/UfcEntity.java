@@ -23,16 +23,8 @@ public class UfcEntity extends AbstractEntity {
 
 	@OneToMany(mappedBy = "ufcEntity", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<EventEntity> ufcEvents;
-	/*
-	 * only for @OneToOne
-	 * Здесь нужно обратить внимание на использование атрибута mappedBy и аннотации @JoinColumn. 
-	 * Код будет работать независимо от того в какой из сущностей будет указан @OneToOne(mappedBy = “”), 
-	 * а в какой @JoinColumn(name = “”, referencedColumnName = “”), 
-	 * но есть рекомендация использовать @JoinColumn в той сущности, 
-	 * которая имеет физическую информацию(т.е. этот атрибут есть в DTO), а не ссылку foreign key. 
-	 */
 	@Setter
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "ufcEntity")
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ufc_head_address_id", referencedColumnName = "id")
 	private AddressEntity ufcAddress;
 	@OneToMany(mappedBy = "ufcEntity", cascade = CascadeType.ALL, orphanRemoval = true)

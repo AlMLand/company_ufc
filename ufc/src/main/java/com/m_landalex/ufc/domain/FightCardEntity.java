@@ -19,12 +19,12 @@ import lombok.Setter;
 @Table(name = "fight_card")
 public class FightCardEntity extends AbstractEntity {
 
-	@OneToOne(mappedBy = "fightCardEntity", cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private MainCardEntity mainCard;
-	@OneToOne(mappedBy = "fightCardEntity", cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private PreliminaryCardEntity preliminaryCard;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "fightCard")
 	@JoinColumn(name = "event", referencedColumnName = "id")
 	private EventEntity eventEntity;
 	

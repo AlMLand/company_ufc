@@ -34,7 +34,7 @@ public class EventEntity extends AbstractEntity {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "event_location_id", referencedColumnName = "id")
 	private LocationEntity eventLocation;
-	@OneToOne(mappedBy = "eventEntity", cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private FightCardEntity fightCard;
 	
 	@ManyToOne

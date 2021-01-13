@@ -25,7 +25,7 @@ public class PreliminaryCardEntity extends AbstractEntity {
 	private List<FightEntity> fights;
 
 	@Setter
-	@OneToOne
+	@OneToOne(mappedBy = "preliminaryCard")
 	@JoinColumn(name = "fight_card_id", referencedColumnName = "id")
 	private FightCardEntity fightCardEntity;
 

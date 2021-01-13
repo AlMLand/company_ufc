@@ -29,7 +29,7 @@ public class AddressEntity extends AbstractEntity {
 	private String postCode;
 	
 	@Setter
-	@OneToOne
+	@OneToOne(mappedBy = "ufcAddress")
 	private UfcEntity ufcEntity;
 	
 	@OneToMany(mappedBy = "address")
