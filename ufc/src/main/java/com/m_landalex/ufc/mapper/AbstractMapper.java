@@ -6,19 +6,20 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.m_landalex.ufc.data.AbstractObject;
 import com.m_landalex.ufc.domain.AbstractEntity;
 
 public abstract class AbstractMapper<S extends AbstractObject, E extends AbstractEntity> implements Mapper<S, E> {
 
+	@Autowired
 	private ModelMapper modelMapper;
 	private Class<S> dtoClass;
 	private Class<E> entityClass;
 
-	public AbstractMapper(ModelMapper modelMapper, Class<S> dtoClass, Class<E> entityClass) {
+	public AbstractMapper(Class<S> dtoClass, Class<E> entityClass) {
 		super();
-		this.modelMapper = modelMapper;
 		this.dtoClass = dtoClass;
 		this.entityClass = entityClass;
 	}
