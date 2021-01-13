@@ -24,4 +24,9 @@ public class UfcInternEmployeeService {
 		return ufcInternEmployeeMapper.toDTOList(ufcInternEmployeeRepository.findAll());
 	}
 	
+	public UfcInterEmployee save(UfcInterEmployee ufcInterEmployee) {
+		ufcInternEmployeeRepository.save(ufcInternEmployeeMapper.toEntity(ufcInterEmployee));
+		return ufcInterEmployee;
+	}
+	
 }

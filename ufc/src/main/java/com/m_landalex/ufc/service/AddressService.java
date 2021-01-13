@@ -24,4 +24,9 @@ public class AddressService {
 		return addressMapper.toDTOList(addressRepository.findAll());
 	}
 	
+	public Address save(Address address) {
+		addressRepository.save(addressMapper.toEntity(address));
+		return address;
+	}
+	
 }

@@ -24,4 +24,9 @@ public class LocationService {
 		return locationMapper.toDTOList(locationRepository.findAll());
 	}
 	
+	public Location save(Location location) {
+		locationRepository.save(locationMapper.toEntity(location));
+		return location;
+	}
+	
 }

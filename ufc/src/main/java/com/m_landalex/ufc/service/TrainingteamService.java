@@ -24,4 +24,9 @@ public class TrainingteamService {
 		return trainingteamMapper.toDTOList(trainingteamRepository.findAll());
 	}
 	
+	public Trainingteam save(Trainingteam trainingteam) {
+		trainingteamRepository.save(trainingteamMapper.toEntity(trainingteam));
+		return trainingteam;
+	}
+	
 }

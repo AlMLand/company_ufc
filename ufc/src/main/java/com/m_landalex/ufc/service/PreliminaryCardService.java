@@ -24,4 +24,9 @@ public class PreliminaryCardService {
 		return preliminaryCardMapper.toDTOList(preliminaryCardRepository.findAll());
 	}
 	
+	public PreliminaryCard save(PreliminaryCard preliminaryCard) {
+		preliminaryCardRepository.save(preliminaryCardMapper.toEntity(preliminaryCard));
+		return preliminaryCard;
+	}
+	
 }

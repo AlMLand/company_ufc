@@ -24,4 +24,9 @@ public class EventService {
 		return eventMapper.toDTOList(eventRepository.findAll());
 	}
 	
+	public Event save(Event event) {
+		eventRepository.save(eventMapper.toEntity(event));
+		return event;
+	}
+	
 }

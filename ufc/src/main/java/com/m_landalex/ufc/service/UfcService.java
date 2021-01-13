@@ -24,4 +24,9 @@ public class UfcService {
 		return ufcMapper.toDTOList(ufcRepository.findAll());
 	}
 	
+	public Ufc save(Ufc ufc) {
+		ufcRepository.save(ufcMapper.toEntity(ufc));
+		return ufc;
+	}
+	
 }

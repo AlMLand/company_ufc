@@ -24,4 +24,9 @@ public class FightService {
 		return fightMapper.toDTOList(fightRepository.findAll());
 	}
 	
+	public Fight save(Fight fight) {
+		fightRepository.save(fightMapper.toEntity(fight));
+		return fight;
+	}
+	
 }

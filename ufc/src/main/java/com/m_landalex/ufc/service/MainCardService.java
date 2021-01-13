@@ -24,4 +24,9 @@ public class MainCardService {
 		return mainCardMapper.toDTOList(mainCardRepository.findAll());
 	}
 	
+	public MainCard save(MainCard mainCard) {
+		mainCardRepository.save(mainCardMapper.toEntity(mainCard));
+		return mainCard;
+	}
+	
 }
