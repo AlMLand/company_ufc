@@ -31,7 +31,6 @@ public class FightEntity extends AbstractEntity {
 	@Enumerated(EnumType.STRING)
 	private Referee referee;
 	@OneToMany(mappedBy = "fightEntity", cascade = CascadeType.ALL)
-	@JoinColumn(name = "fighters")
 	private List<FighterEntity> fighters;
 	
 	@Setter
