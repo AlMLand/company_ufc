@@ -15,5 +15,10 @@ public class Trainingteam extends AbstractObject {
 
 	private String teamName;
 	private Address address;
+
+	@Override
+	public String toString() {
+		return "Trainingteam " + super.toString() + " [teamName=" + teamName + ", address=" + address + "]";
+	}
 	
 }

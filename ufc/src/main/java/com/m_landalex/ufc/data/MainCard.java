@@ -19,4 +19,9 @@ public class MainCard extends AbstractObject {
 	@Singular
 	private List<Fight> fights;
 
+	@Override
+	public String toString() {
+		return "MainCard " + super.toString() + " [fights=" + fights + "]";
+	}
+
 }

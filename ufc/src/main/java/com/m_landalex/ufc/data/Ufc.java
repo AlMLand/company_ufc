@@ -21,5 +21,11 @@ public class Ufc extends AbstractObject {
 	private Address ufcAddress;
 	@Singular
 	private List<UfcInterEmployee> ufcInterEmployees;
+	
+	@Override
+	public String toString() {
+		return "Ufc " + super.toString() + " " + ufcEvents + ",\n ufcAddress=" + ufcAddress +
+				",\n ufcInterEmployees=" + ufcInterEmployees + "]";
+	}
 
 }

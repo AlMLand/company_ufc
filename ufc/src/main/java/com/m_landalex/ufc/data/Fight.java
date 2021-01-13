@@ -20,5 +20,11 @@ public class Fight extends AbstractObject {
 	private Referee referee;
 	@Singular
 	private List<Fighter> fighters;
+
+	@Override
+	public String toString() {
+		return "Fight " + super.toString() + " [fightNumberInCard=" + fightNumberInCard + ", referee=" + referee + ",\n fighters=" + fighters
+				+ "]";
+	}
 	
 }

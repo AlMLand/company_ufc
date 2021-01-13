@@ -19,4 +19,9 @@ public class PreliminaryCard extends AbstractObject {
 	@Singular
 	private List<Fight> fights;
 
+	@Override
+	public String toString() {
+		return "PreliminaryCard " + super.toString() + " [fights=" + fights + "]";
+	}
+
 }

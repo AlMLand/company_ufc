@@ -15,5 +15,10 @@ public class FightCard extends AbstractObject {
 
 	private MainCard mainCard;
 	private PreliminaryCard preliminaryCard;
+
+	@Override
+	public String toString() {
+		return "FightCard " + super.toString() + " [mainCard=" + mainCard + ",\n preliminaryCard=" + preliminaryCard + "]";
+	}
 	
 }

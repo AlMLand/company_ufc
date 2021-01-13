@@ -22,5 +22,12 @@ public class Fighter extends AbstractObject {
 	private int wins;
 	private int loses;
 	private int undecided;
+
+	@Override
+	public String toString() {
+		return "Fighter " + super.toString() + " [weightClass=" + weightClass + ", ufcRanked=" + ufcRanked + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", age=" + age + ",\n trainingteam=" + trainingteam + ",\n wins=" + wins
+				+ ", loses=" + loses + ", undecided=" + undecided + "]";
+	}
 	
 }

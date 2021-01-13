@@ -18,5 +18,11 @@ public class UfcInterEmployee extends AbstractObject {
 	private String lastName;
 	private int age;
 	private Address address;
+
+	@Override
+	public String toString() {
+		return "UfcInterEmployee " + super.toString() + " [position=" + position + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", age=" + age + ", address=" + address + "]";
+	}
 	
 }
