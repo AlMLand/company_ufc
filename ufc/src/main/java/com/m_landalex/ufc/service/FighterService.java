@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.m_landalex.ufc.data.Fighter;
@@ -18,6 +19,11 @@ public class FighterService {
 	private FighterRepository fighterRepository;
 	@Autowired
 	private FighterMapper fighterMapper;
+	
+	@Transactional(propagation = Propagation.NEVER)
+	public long countAll() {
+		return fighterRepository.countAll();
+	}
 	
 	@Transactional(readOnly = true)
 	public List<Fighter> fetchAll(){
