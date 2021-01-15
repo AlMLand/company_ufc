@@ -13,7 +13,7 @@ import com.m_landalex.ufc.persistence.TrainingteamRepository;
 @Transactional
 @Service
 public class TrainingteamService {
-
+	
 	@Autowired
 	private TrainingteamRepository trainingteamRepository;
 	@Autowired

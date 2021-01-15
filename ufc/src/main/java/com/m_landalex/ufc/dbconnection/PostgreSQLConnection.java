@@ -1,10 +1,13 @@
 package com.m_landalex.ufc.dbconnection;
 
+import java.time.LocalDateTime;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,6 +24,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @PropertySource("classpath:application.properties")
 @Configuration
 public class PostgreSQLConnection {
+	
+	private static final Logger logger = LoggerFactory.getLogger(PostgreSQLConnection.class);
 
 	@Autowired
 	private Environment environment;
@@ -33,9 +38,10 @@ public class PostgreSQLConnection {
 			dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
 			dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
 			dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
+			logger.debug("DATASOURCE IS CREATED {}", LocalDateTime.now());
 			return dataSource;
 		}catch(Exception exception) {
-			System.out.println(exception);
+			logger.error("DATASOURCE NOT CREATED", exception);
 			return null;
 		}
 	}

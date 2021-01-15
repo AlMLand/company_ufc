@@ -13,7 +13,7 @@ import com.m_landalex.ufc.persistence.UfcRepository;
 @Transactional
 @Service
 public class UfcService {
-
+	
 	@Autowired
 	private UfcRepository ufcRepository;
 	@Autowired

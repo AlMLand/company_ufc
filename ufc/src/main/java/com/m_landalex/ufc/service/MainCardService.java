@@ -13,7 +13,7 @@ import com.m_landalex.ufc.persistence.MainCardRepository;
 @Transactional
 @Service
 public class MainCardService {
-
+	
 	@Autowired
 	private MainCardRepository mainCardRepository;
 	@Autowired

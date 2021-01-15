@@ -13,7 +13,7 @@ import com.m_landalex.ufc.persistence.EventRepository;
 @Transactional
 @Service
 public class EventService {
-
+	
 	@Autowired
 	private EventRepository eventRepository;
 	@Autowired

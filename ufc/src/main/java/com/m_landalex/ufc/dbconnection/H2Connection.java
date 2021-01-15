@@ -1,10 +1,14 @@
 package com.m_landalex.ufc.dbconnection;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,16 +26,19 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @EnableJpaRepositories(basePackages = "com.m_landalex.ufc.persistence")
 @Configuration
 public class H2Connection {
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(H2Connection.class);
+	
 	@Autowired
 	private Environment environment;
-	
+	               
 	@Bean
 	public DataSource dataSource() {
 		try {
+			logger.info("DATASOURCE IS CREATED {} {}", LocalDate.now(), LocalTime.now());
 			return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
 		}catch(Exception exception) {
-			System.out.println(exception);
+			logger.error("DATASOURCE NOT CREATED {}", exception);
 			return null;
 		}
 	}

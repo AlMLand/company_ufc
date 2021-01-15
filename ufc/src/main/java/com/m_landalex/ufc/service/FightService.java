@@ -13,7 +13,7 @@ import com.m_landalex.ufc.persistence.FightRepository;
 @Transactional
 @Service
 public class FightService {
-
+	
 	@Autowired
 	private FightRepository fightRepository;
 	@Autowired
