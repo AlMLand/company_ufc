@@ -14,9 +14,9 @@ import com.m_landalex.ufc.persistence.AddressRepository;
 @Service
 public class AddressService {
 
-	@Autowired
+	@Autowired(required = false)
 	private AddressRepository addressRepository;
-	@Autowired
+	@Autowired(required = false)
 	private AddressMapper addressMapper;
 	
 	@Transactional(readOnly = true)

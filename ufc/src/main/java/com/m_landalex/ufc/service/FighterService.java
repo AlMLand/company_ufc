@@ -15,9 +15,9 @@ import com.m_landalex.ufc.persistence.FighterRepository;
 @Service
 public class FighterService {
 	
-	@Autowired
+	@Autowired(required = false)
 	private FighterRepository fighterRepository;
-	@Autowired
+	@Autowired(required = false)
 	private FighterMapper fighterMapper;
 	
 	@Transactional(propagation = Propagation.NEVER)

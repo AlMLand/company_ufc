@@ -1,101 +1,83 @@
-package com.m_landalex.ufc.dbconnection;
+package com.m_landalex.ufc.dbconnectionXA;
 
+import java.time.LocalDateTime;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.hibernate.engine.transaction.jta.platform.internal.AtomikosJtaPlatform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import com.atomikos.jdbc.AtomikosDataSourceBean;
 
-@EnableJpaRepositories(basePackages = "com.m_landalex.ufc.persistence")
+@EnableJpaRepositories(basePackages = "com.m_landalex.ufc.serviceXA", entityManagerFactoryRef = "db_2EntityManager",
+						transactionManagerRef = "transactionManager")
 @ComponentScan(basePackages = "com.m_landalex.ufc")
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:configmysqlXA.properties")
+@DependsOn("transactionManager")
 @Configuration
-public class JTAConnection {
+public class AtomikosJTAConnectionMySQLDb_2XA {
 
-	private static final Logger logger = LoggerFactory.getLogger(JTAConnection.class);
+	private static final Logger logger = LoggerFactory.getLogger(AtomikosJTAConnectionMySQLDb_2XA.class);
 	
 	@Autowired
 	private Environment environment;
 	
 	@Bean(initMethod = "init", destroyMethod = "close")
-	public DataSource dataSource_1() {
+	public DataSource dataSourceDb_2() {
 		AtomikosDataSourceBean dataSourceBean = new AtomikosDataSourceBean();
 		try {
-			dataSourceBean.setUniqueResourceName("PostgreSQL");
-			dataSourceBean.setXaDataSourceClassName(environment.getRequiredProperty("postgresql.setXaDataSourceClassName"));
-			dataSourceBean.setXaProperties(getXaProperties_1());
-			dataSourceBean.setPoolSize(1);
-			logger.debug("DATASOURCE WITH NAME PostgreSQL ARE SUCCESSFULL CREATED");
-			return dataSourceBean;
-		} catch (Exception e) {
-			logger.error("DATASOURCE ARE NOT CREATED {}", e);
-			return null;
-		}
-	}
-
-	private Properties getXaProperties_1() {
-		Properties properties = new Properties();
-		properties.setProperty("databaseName", environment.getRequiredProperty("databaseName"));
-		properties.setProperty("user", environment.getRequiredProperty("user"));
-		properties.setProperty("password", environment.getRequiredProperty("password"));
-		return properties;
-	}
-	
-	@Bean(initMethod = "init", destroyMethod = "close")
-	public DataSource dataSource_2() {
-		AtomikosDataSourceBean dataSourceBean = new AtomikosDataSourceBean();
-		try {
-			dataSourceBean.setUniqueResourceName("MySQL");
+			dataSourceBean.setUniqueResourceName("DB_2");
 			dataSourceBean.setXaDataSourceClassName(environment.getRequiredProperty("mysql.setXaDataSourceClassName"));
-			dataSourceBean.setXaProperties(getXaProperties_2());
+			dataSourceBean.setXaProperties(getXaProperties());
 			dataSourceBean.setPoolSize(1);
+			logger.debug("DATASOURCE MySQL ARE SUCCESSFULL CREATED {}", LocalDateTime.now());
 			return dataSourceBean;
 		} catch (Exception e) {
-			logger.error("DATASOURCE ARE NOT CREATED {}", e);
-			return null;
+			logger.error("MySQL DATASOURCE ARE NOT CREATED");
+			throw new DataAccessResourceFailureException("MySQL DATASOURCE ARE NOT CREATED", e);
 		}
 	}
 
-	private Properties getXaProperties_2() {
+	private Properties getXaProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("databaseName", environment.getRequiredProperty("databaseName"));
-		properties.setProperty("user", environment.getRequiredProperty("user"));
-		properties.setProperty("password", environment.getRequiredProperty("password"));
+		properties.setProperty("databaseName", environment.getRequiredProperty("mysql.databaseName.db_2"));
+		properties.setProperty("user", environment.getRequiredProperty("mysql.user"));
+		properties.setProperty("password", environment.getRequiredProperty("mysql.password"));
 		return properties;
 	}
 	
-	@Bean
-	public EntityManagerFactory entityManagerFactory() {
+	@Bean(name = "db_2EntityManager")
+	public EntityManagerFactory db_2EntityManager() {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		factoryBean.setPackagesToScan("com.m_landalex.ufc.domain");
-		factoryBean.setDataSource(dataSource_1());
-		factoryBean.setDataSource(dataSource_2());
+		factoryBean.setDataSource(dataSourceDb_2());
 		factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		factoryBean.setJpaProperties(getHibernateProperties());
+		factoryBean.setPersistenceUnitName("db_2EntityManager");
 		factoryBean.afterPropertiesSet();
-		return factoryBean.getNativeEntityManagerFactory();
+		return factoryBean.getObject();
 	}
 
 	private Properties getHibernateProperties() {
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.transaction.factory_class", environment.getRequiredProperty("hibernate.transaction.factory_class"));
-		properties.setProperty("hibernate.transaction.jta.platform", environment.getRequiredProperty("hibernate.transaction.jta.platform"));
+		properties.setProperty("hibernate.transaction.jta.platform", AtomikosJtaPlatform.class.getName());
 		properties.setProperty("hibernate.transaction.coordinator_class", environment.getRequiredProperty("hibernate.transaction.coordinator_class"));
 		properties.setProperty("mysql.hibernate.dialect", environment.getRequiredProperty("mysql.hibernate.dialect"));
-		properties.setProperty("posgresql.hibernate.dialect", environment.getRequiredProperty("posgresql.hibernate.dialect"));
 		properties.setProperty("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
 		properties.setProperty("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
 		properties.setProperty("hibernate.use_sql_comments", environment.getRequiredProperty("hibernate.use_sql_comments"));

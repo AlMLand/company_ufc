@@ -1,5 +1,5 @@
 package com.m_landalex.ufc.dbconnection;
-
+/*
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Properties;
@@ -15,6 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -38,8 +39,8 @@ public class H2Connection {
 			logger.info("DATASOURCE IS CREATED {} {}", LocalDate.now(), LocalTime.now());
 			return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
 		}catch(Exception exception) {
-			logger.error("DATASOURCE NOT CREATED {}", exception);
-			return null;
+			logger.error("H2 DATASOURCE ARE NOT CREATED");
+			throw new DataAccessResourceFailureException("H2 DATASOURCE ARE NOT CREATED", exception);
 		}
 	}
 	
@@ -68,3 +69,4 @@ public class H2Connection {
 	}
 	
 }
+*/

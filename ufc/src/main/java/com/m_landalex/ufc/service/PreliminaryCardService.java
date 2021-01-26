@@ -14,9 +14,9 @@ import com.m_landalex.ufc.persistence.PreliminaryCardRepository;
 @Service
 public class PreliminaryCardService {
 
-	@Autowired
+	@Autowired(required = false)
 	private PreliminaryCardRepository preliminaryCardRepository;
-	@Autowired
+	@Autowired(required = false)
 	private PreliminaryCardMapper preliminaryCardMapper;
 	
 	@Transactional(readOnly = true)

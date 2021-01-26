@@ -1,5 +1,5 @@
 package com.m_landalex.ufc.dbconnection;
-
+/*
 import java.time.LocalDateTime;
 import java.util.Properties;
 
@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -41,8 +42,8 @@ public class PostgreSQLConnection {
 			logger.debug("DATASOURCE IS CREATED {}", LocalDateTime.now());
 			return dataSource;
 		}catch(Exception exception) {
-			logger.error("DATASOURCE NOT CREATED", exception);
-			return null;
+			logger.error("PostgreSQL DATASOURCE ARE NOT CREATED");
+			throw new DataAccessResourceFailureException("PostgreSQL DATASOURCE ARE NOT CREATED", exception);
 		}
 	}
 	
@@ -71,3 +72,4 @@ public class PostgreSQLConnection {
 	}
 	
 }
+*/

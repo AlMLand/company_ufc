@@ -14,9 +14,9 @@ import com.m_landalex.ufc.persistence.MainCardRepository;
 @Service
 public class MainCardService {
 	
-	@Autowired
+	@Autowired(required = false)
 	private MainCardRepository mainCardRepository;
-	@Autowired
+	@Autowired(required = false)
 	private MainCardMapper mainCardMapper;
 	
 	@Transactional(readOnly = true)

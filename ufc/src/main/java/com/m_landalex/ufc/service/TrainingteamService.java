@@ -14,9 +14,9 @@ import com.m_landalex.ufc.persistence.TrainingteamRepository;
 @Service
 public class TrainingteamService {
 	
-	@Autowired
+	@Autowired(required = false)
 	private TrainingteamRepository trainingteamRepository;
-	@Autowired
+	@Autowired(required = false)
 	private TrainingteamMapper trainingteamMapper;
 	
 	@Transactional(readOnly = true)

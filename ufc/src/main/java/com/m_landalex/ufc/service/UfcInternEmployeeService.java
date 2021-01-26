@@ -14,9 +14,9 @@ import com.m_landalex.ufc.persistence.UfcInternEmployeeRepository;
 @Service
 public class UfcInternEmployeeService {
 	
-	@Autowired
+	@Autowired(required = false)
 	private UfcInternEmployeeRepository ufcInternEmployeeRepository;
-	@Autowired
+	@Autowired(required = false)
 	private UfcInternEmployeeMapper ufcInternEmployeeMapper;
 	
 	@Transactional(readOnly = true)

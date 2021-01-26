@@ -10,13 +10,13 @@ import com.m_landalex.ufc.data.Event;
 import com.m_landalex.ufc.mapper.EventMapper;
 import com.m_landalex.ufc.persistence.EventRepository;
 
-@Transactional
+@Transactional(transactionManager = "")
 @Service
 public class EventService {
 	
-	@Autowired
+	@Autowired(required = false)
 	private EventRepository eventRepository;
-	@Autowired
+	@Autowired(required = false)
 	private EventMapper eventMapper;
 	
 	@Transactional(readOnly = true)

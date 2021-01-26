@@ -14,9 +14,9 @@ import com.m_landalex.ufc.persistence.LocationRepository;
 @Service
 public class LocationService {
 
-	@Autowired
+	@Autowired(required = false)
 	private LocationRepository locationRepository;
-	@Autowired
+	@Autowired(required = false)
 	private LocationMapper locationMapper;
 	
 	@Transactional(readOnly = true)

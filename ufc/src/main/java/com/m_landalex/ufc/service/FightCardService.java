@@ -14,9 +14,9 @@ import com.m_landalex.ufc.persistence.FightCardRepository;
 @Service
 public class FightCardService {
 	
-	@Autowired
+	@Autowired(required = false)
 	private FightCardRepository fightCardRepository;
-	@Autowired
+	@Autowired(required = false)
 	private FightCardMapper fightCardMapper;
 	
 	@Transactional(readOnly = true)

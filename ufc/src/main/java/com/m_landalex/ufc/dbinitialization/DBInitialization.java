@@ -1,4 +1,4 @@
-package com.m_landalex.ufc.service;
+package com.m_landalex.ufc.dbinitialization;
 
 import java.time.LocalDate;
 
@@ -23,12 +23,16 @@ import com.m_landalex.ufc.data.Trainingteam;
 import com.m_landalex.ufc.data.Ufc;
 import com.m_landalex.ufc.data.UfcInterEmployee;
 import com.m_landalex.ufc.data.WeightClass;
+import com.m_landalex.ufc.service.UfcService;
+import com.m_landalex.ufc.serviceXA.UfcServiceXA;
 
 @Service
 public class DBInitialization {
 
-	@Autowired
+	@Autowired(required = false)
 	private UfcService ufcService;
+	@Autowired
+	private UfcServiceXA ufcServiceXA;
 	
 	@PostConstruct
 	public void setupInitialization() {
@@ -428,7 +432,7 @@ public class DBInitialization {
 						.build())
 				.build();
 		
-		ufcService.save(ufc);
+		ufcServiceXA.save(ufc);
 		
 	}
 	

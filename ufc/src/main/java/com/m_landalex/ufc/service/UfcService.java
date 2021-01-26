@@ -14,9 +14,9 @@ import com.m_landalex.ufc.persistence.UfcRepository;
 @Service
 public class UfcService {
 	
-	@Autowired
+	@Autowired(required = false)
 	private UfcRepository ufcRepository;
-	@Autowired
+	@Autowired(required = false)
 	private UfcMapper ufcMapper;
 	
 	@Transactional(readOnly = true)
